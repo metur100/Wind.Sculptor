@@ -91,7 +91,7 @@ class WorldCard extends Phaser.GameObjects.Container implements Focusable {
     this.ring = scene.add.graphics();
     this.add(this.ring);
     this.setSize(w, h);
-    this.setInteractive(new Phaser.Geom.Rectangle(-w / 2, -h / 2, w, h), Phaser.Geom.Rectangle.Contains);
+    this.setInteractive(new Phaser.Geom.Rectangle(0, 0, w, h), Phaser.Geom.Rectangle.Contains);
     if (this.input) this.input.cursor = 'pointer';
     this.on('pointerup', () => this.activate());
     scene.add.existing(this);

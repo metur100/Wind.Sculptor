@@ -67,7 +67,7 @@ class LevelTile extends Phaser.GameObjects.Container implements Focusable {
     this.ring = scene.add.graphics();
     this.add(this.ring);
     this.setSize(s, s);
-    this.setInteractive(new Phaser.Geom.Rectangle(-s / 2, -s / 2, s, s), Phaser.Geom.Rectangle.Contains);
+    this.setInteractive(new Phaser.Geom.Rectangle(0, 0, s, s), Phaser.Geom.Rectangle.Contains);
     if (this.input) this.input.cursor = 'pointer';
     this.on('pointerup', () => this.activate());
     scene.add.existing(this);

@@ -76,7 +76,7 @@ export class Button extends Phaser.GameObjects.Container implements Focusable {
     }
 
     this.setSize(width, height);
-    this.setInteractive(new Phaser.Geom.Rectangle(-width / 2, -height / 2, width, height), Phaser.Geom.Rectangle.Contains);
+    this.setInteractive(new Phaser.Geom.Rectangle(0, 0, width, height), Phaser.Geom.Rectangle.Contains);
     if (this.input) this.input.cursor = 'pointer';
     this.on('pointerdown', () => {
       if (this.disabled) return;
