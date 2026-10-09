@@ -204,6 +204,19 @@ scripts/verify-levels.ts     headless auto-player for every level
 scripts/smoke.mjs            Playwright browser smoke test
 ```
 
+## iOS and Android apps (Expo)
+
+`mobile/` is an Expo app that runs the game, inlined into a single HTML file, inside a WebView. It works fully offline and adds native haptics, pause on background, safe-area insets and the Android back button (see `src/game/utils/NativeBridge.ts`).
+
+```bash
+npm run build:mobile                                   # game → mobile/src/gameHtml.ts (run after every game change)
+cd mobile
+eas build -p android --profile production              # signed .aab for Google Play
+eas build -p ios --profile production --auto-submit    # .ipa uploaded to App Store Connect
+```
+
+Store listings, screenshots, graphics, the privacy policy and the full release checklist are in [`store/README.md`](store/README.md).
+
 ## Android (Capacitor)
 
 The web build is ready to be wrapped with [Capacitor](https://capacitorjs.com/):

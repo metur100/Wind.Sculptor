@@ -7,3 +7,5 @@ test-results
 # Capacitor native projects are generated (see README)
 android
 ios
+dist-mobile
+store/builds/

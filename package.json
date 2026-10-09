@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "verify:levels": "vite-node scripts/verify-levels.ts",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "build:mobile": "tsc --noEmit && node scripts/build-mobile.mjs"
   },
   "dependencies": {
     "@fontsource/fredoka": "^5.3.0",

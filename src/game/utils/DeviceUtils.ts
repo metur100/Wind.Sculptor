@@ -21,11 +21,16 @@ interface NavigatorWithMemory extends Navigator {
   deviceMemory?: number;
 }
 
-/** Reads `env(safe-area-inset-*)` through a probe element (0 where unsupported). */
+/**
+ * Reads `env(safe-area-inset-*)` through a probe element (0 where unsupported). The mobile app shell
+ * also passes its native insets as `--native-safe-*`, since Android WebViews may not report env().
+ */
 function readSafeAreaInsets(): { top: number; bottom: number } {
   const probe = document.createElement('div');
   probe.style.cssText =
-    'position:fixed;top:0;left:0;visibility:hidden;pointer-events:none;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);';
+    'position:fixed;top:0;left:0;visibility:hidden;pointer-events:none;' +
+    'padding-top:max(env(safe-area-inset-top, 0px), var(--native-safe-top, 0px));' +
+    'padding-bottom:max(env(safe-area-inset-bottom, 0px), var(--native-safe-bottom, 0px));';
   document.body.appendChild(probe);
   const style = getComputedStyle(probe);
   const insets = { top: parseFloat(style.paddingTop) || 0, bottom: parseFloat(style.paddingBottom) || 0 };

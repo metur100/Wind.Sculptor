@@ -1,0 +1,24 @@
+# EAS uploads the repo from here. Keep the archive small and never upload signing secrets.
+node_modules/
+**/node_modules/
+dist/
+dist-mobile/
+test-results/
+store/
+*.log
+.DS_Store
+.vite
+/android
+/ios
+mobile/android
+mobile/ios
+mobile/.expo/
+mobile/credentials.json
+mobile/credentials/
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem

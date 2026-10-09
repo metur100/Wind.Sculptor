@@ -113,14 +113,16 @@ export class PlayField {
     // Particles.
     const diameter = level.spacing * this.material.visual.sizeFactor;
     this.atlas = createParticleAtlas(scene, this.material, diameter, this.scale, `particles-${level.def.material}-${atlasCounter++}`);
-    this.blitter = scene.add.blitter(0, 0, this.atlas.key).setScale(1 / this.scale);
+    // Phaser's Blitter ignores its own scale when rendering, so a scaled container maps the
+    // render-scale atlas (and bob positions in render-scale pixels) back to design units.
+    this.blitter = scene.make.blitter({ x: 0, y: 0, key: this.atlas.key }, false);
     if (this.material.visual.additive) this.blitter.setBlendMode(Phaser.BlendModes.ADD);
     for (let i = 0; i < this.system.capacity; i++) {
       const bob = this.blitter.create(0, 0, this.atlas.frames[0][0]);
       bob.setVisible(false);
       this.bobs.push(bob);
     }
-    this.container.add(this.blitter);
+    this.container.add(scene.add.container(0, 0, [this.blitter]).setScale(1 / this.scale));
 
     this.fx = new FxPool(scene, this.container, profile.lowEnd ? 90 : 160);
     this.hintGraphics = scene.add.graphics();

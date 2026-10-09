@@ -8,6 +8,7 @@ import Phaser from 'phaser';
 import { AudioManager } from './game/audio/AudioManager';
 import { createGameConfig } from './game/GameConfig';
 import { GameContext } from './game/GameContext';
+import { installNativeBridge } from './game/utils/NativeBridge';
 import { installTestHooks } from './game/utils/TestHooks';
 
 GameContext.init();
@@ -18,6 +19,8 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden) AudioManager.suspend();
   else AudioManager.resume();
 });
+
+installNativeBridge(game);
 
 // Automation hooks for the smoke test – only in dev builds or with ?debug in the URL.
 if (import.meta.env.DEV || new URLSearchParams(location.search).has('debug')) installTestHooks(game);

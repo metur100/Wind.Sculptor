@@ -18,6 +18,8 @@ export class AmbientParticles {
   private readonly system: ParticleSystem;
   private readonly wind = new WindField({ strength: 3000 });
   private readonly blitter: Phaser.GameObjects.Blitter;
+  /** Scales the blitter down to design units (a Blitter ignores its own scale when rendering). */
+  private readonly layer: Phaser.GameObjects.Container;
   private readonly bobs: Phaser.GameObjects.Bob[] = [];
   private readonly atlas: ParticleAtlas;
   private readonly rng = new Rng(99);
@@ -48,8 +50,9 @@ export class AmbientParticles {
     );
     this.system.spawn({ kind: 'scatter' }, n, 42);
     this.atlas = createParticleAtlas(scene, def, 22 * def.visual.sizeFactor * 0.8, this.scale, `ambient-${material}-${counter++}`);
-    this.blitter = scene.add.blitter(0, 0, this.atlas.key).setScale(1 / this.scale).setAlpha(0.85);
+    this.blitter = scene.make.blitter({ x: 0, y: 0, key: this.atlas.key }, false).setAlpha(0.85);
     if (def.visual.additive) this.blitter.setBlendMode(Phaser.BlendModes.ADD);
+    this.layer = scene.add.container(0, 0, [this.blitter]).setScale(1 / this.scale);
     for (let i = 0; i < n; i++) this.bobs.push(this.blitter.create(0, 0, this.atlas.frames[0][0]));
 
     if (interactive) {
@@ -77,8 +80,8 @@ export class AmbientParticles {
     scene.events.once('shutdown', () => this.destroy());
   }
 
-  get gameObject(): Phaser.GameObjects.Blitter {
-    return this.blitter;
+  get gameObject(): Phaser.GameObjects.Container {
+    return this.layer;
   }
 
   update(deltaMs: number): void {
@@ -120,7 +123,7 @@ export class AmbientParticles {
   destroy(): void {
     for (const [event, handler] of this.handlers) this.scene.input.off(event, handler);
     this.handlers.length = 0;
-    if (this.blitter.active) this.blitter.destroy();
+    if (this.layer.active) this.layer.destroy(true);
     if (this.scene.textures.exists(this.atlas.key)) this.scene.textures.remove(this.atlas.key);
   }
 }
