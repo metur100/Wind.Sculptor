@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "52d1bd22-7fe8-47cb-b757-82a1296d97c9"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.certidevelopment.windsculptor",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    }
+  }
+}
