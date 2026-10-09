@@ -86,6 +86,7 @@ Before every new upload, raise `ios.buildNumber` (and `version` for a new store 
 - [ ] Privacy policy URL
 - [ ] App icon 512 × 512 – `graphics/play-store-icon-512.png`
 - [ ] Feature graphic 1024 × 500 – `graphics/play-feature-graphic-1024x500.png`
+- [ ] Header image (Kopfzeilenbild) 5244 × 2950 or 3840 × 1646 – `graphics/play-header-*.png`
 - [ ] Phone screenshots – `screenshots/android-phone/`
 - [ ] 7" tablet screenshots – `screenshots/android-tablet-7/`
 - [ ] 10" tablet screenshots – `screenshots/android-tablet-10/`
@@ -99,6 +100,7 @@ Before every new upload, raise `ios.buildNumber` (and `version` for a new store 
 - [ ] Privacy policy URL + support URL
 - [ ] iPhone 6.9" screenshots – `screenshots/ios-iphone-6.9/`
 - [ ] iPad 13" screenshots – `screenshots/ios-ipad-13/`
+- [ ] (optional) iPhone 6.3" – `screenshots/ios-iphone-6.3/`
 - [ ] (optional) iPhone 6.5" – `screenshots/ios-iphone-6.5/`
 - [ ] Name, subtitle, promotional text, description, keywords
 - [ ] Category Games → Puzzle / Casual, age rating 4+, copyright

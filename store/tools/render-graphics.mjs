@@ -97,6 +97,41 @@ function featureGraphic() {
   <div class="phone a"></div><div class="phone b"></div>`;
 }
 
+// ── Header image (Google Play "Kopfzeilenbild", 5244 × 2950 and 3840 × 1646) ────────────────────
+// Rendered at half size with deviceScaleFactor 2. Key content stays in the centre in case Play crops.
+function headerImage(W, H) {
+  const shot = (n) => png(path.join(ROOT, 'store/screenshots/raw/ios-iphone-6.9', `${n}.png`));
+  // Four overlapping phones between `right` and 94 % of the width.
+  const right = Math.round(W * 0.5);
+  const span = W * 0.94 - right;
+  const pw = Math.round(Math.min((H * 0.74 * 1320) / 2868, span / (1 + 3 * 0.72)));
+  const ph = Math.round((pw * 2868) / 1320);
+  const step = (span - pw) / 3;
+  const phones = ['01-swipe-wind', '04-night-forest', '03-festival', '05-deep-ocean']
+    .map((n, i) => {
+      const x = right + i * step;
+      const lift = [0.06, -0.02, 0.1, 0.02][i] * H;
+      const rot = [-8, -2, 4, 9][i];
+      return `<div class="phone" style="left:${x}px; top:${(H - ph) / 2 + lift}px; transform:rotate(${rot}deg); z-index:${i}; background-image:url(${shot(n)})"></div>`;
+    })
+    .join('');
+  const title = Math.round(Math.min(H * 0.17, W * 0.08));
+  return `<style>${FONTS}
+    body { width:${W}px; height:${H}px; position:relative; color:#24324a;
+      background: radial-gradient(circle at 78% 22%, #fff3d6 0, rgba(255,243,214,0) 30%), linear-gradient(120deg, #ffe2b8 0%, #ffb987 55%, #ff9f7a 100%); }
+    .text { position:absolute; left:${Math.round(W * 0.08)}px; top:50%; transform:translateY(-50%); }
+    .icon { width:${Math.round(H * 0.2)}px; height:${Math.round(H * 0.2)}px; margin-bottom:${Math.round(H * 0.04)}px; filter: drop-shadow(0 ${H * 0.02}px ${H * 0.04}px rgba(150,70,30,0.3)); }
+    .icon svg { width:100%; height:100%; display:block; }
+    h1 { font-size:${title}px; font-weight:700; line-height:0.95; }
+    h1 span { color:#f2733f; display:block; }
+    p { margin-top:${Math.round(H * 0.045)}px; font-size:${Math.round(title * 0.3)}px; font-weight:600; opacity:0.82; }
+    .phone { position:absolute; width:${pw}px; height:${ph}px; border-radius:${Math.round(pw * 0.13)}px; border:${Math.max(4, Math.round(pw * 0.035))}px solid #fffaf0;
+      background-size:cover; background-position:center top; box-shadow: 0 ${H * 0.03}px ${H * 0.07}px rgba(60,30,20,0.35); }
+  </style>
+  <div class="text"><div class="icon">${roundedIcon}</div><h1>Wind<span>Sculptor</span></h1><p>Shape the wind. Sculpt the world.</p></div>
+  ${phones}`;
+}
+
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
 const render = async (html, file, w, h, { transparent = false, scale = 1 } = {}) => {
   const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: scale });
@@ -123,6 +158,9 @@ try {
   await render(svgPage(squareIcon), path.join(graphics, 'app-store-icon-1024.png'), 1024, 1024);
   await render(svgPage(squareIcon), path.join(graphics, 'play-store-icon-512.png'), 512, 512);
   await render(featureGraphic(), path.join(graphics, 'play-feature-graphic-1024x500.png'), 1024, 500);
+  await render(headerImage(2622, 1475), path.join(graphics, 'play-header-5244x2950.png'), 2622, 1475, { scale: 2 });
+  await render(headerImage(1920, 823), path.join(graphics, 'play-header-3840x1646.png'), 1920, 823, { scale: 2 });
+  if (process.argv[2] === 'graphics') process.exit(0);
 
   console.log('Captioned screenshots');
   for (const device of DEVICES) {

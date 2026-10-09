@@ -70,6 +70,7 @@ wind,particles,sand,relaxing,calm,puzzle,physics,satisfying,zen,shapes,daily,off
 | Display size in App Store Connect | Folder | Pixel size |
 | --- | --- | --- |
 | **iPhone 6.9"** (required; also used for smaller iPhones) | `store/screenshots/ios-iphone-6.9/` | 1320 × 2868 |
+| iPhone 6.3" (optional) | `store/screenshots/ios-iphone-6.3/` | 1206 × 2622 |
 | iPhone 6.5" (optional) | `store/screenshots/ios-iphone-6.5/` | 1242 × 2688 |
 | **iPad 13"** (required – the app supports iPad) | `store/screenshots/ios-ipad-13/` | 2064 × 2752 |
 
