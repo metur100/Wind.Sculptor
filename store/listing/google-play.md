@@ -63,14 +63,14 @@ Uncaptioned versions of every screenshot are in `store/screenshots/raw/<device>/
 | Category | Puzzle |
 | Tags (up to 5) | Casual, Puzzle, Relaxing, Offline, Physics (pick the closest available tags) |
 | Email address | certidevelopment@gmail.com |
-| Website | (optional – e.g. the page that hosts the privacy policy) |
+| Website | https://metur100.github.io/Wind.Sculptor.Landing/ |
 | Phone | (optional) |
 
 ## App content (Policy → App content)
 
 | Section | Answer |
 | --- | --- |
-| **Privacy policy** | URL of the hosted `store/privacy-policy.html` (required – see store/README.md) |
+| **Privacy policy** | https://metur100.github.io/Wind.Sculptor.Landing/privacy.html |
 | **Ads** | **No**, my app does not contain ads |
 | **App access** | All functionality is available without special access (no login) |
 | **Content rating** | Fill in the IARC questionnaire – see below |

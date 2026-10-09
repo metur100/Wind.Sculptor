@@ -10,7 +10,7 @@ mobile/                         Expo app (SDK 57) that runs the game in a WebVie
 store/
   listing/google-play.md        all Play Console texts + Data safety / content rating / app content answers
   listing/app-store.md          all App Store Connect texts + App Privacy / age rating / review notes
-  privacy-policy.html           privacy policy – host it and use its URL in both stores
+  privacy-policy.html           copy of the privacy policy (the live one is on the website, see section 0)
   graphics/                     Play icon 512, feature graphic 1024×500, App Store icon 1024
   screenshots/<device>/         captioned store screenshots (8 per device size)
   screenshots/raw/<device>/     the same shots without captions
@@ -26,9 +26,15 @@ store/
 
 ---
 
-## 0. Host the privacy policy (both stores require a URL)
+## 0. Website, privacy policy and support URL
 
-Upload `store/privacy-policy.html` anywhere public, e.g. GitHub Pages, Netlify Drop (drag the file onto app.netlify.com/drop), or your own website. Use that URL for the Play "Privacy policy" field, the App Store "Privacy Policy URL" and (optionally) the App Store "Support URL".
+The website lives in the separate repo [Wind.Sculptor.Landing](https://github.com/metur100/Wind.Sculptor.Landing) (GitHub Pages):
+
+| Field | URL |
+| --- | --- |
+| Privacy policy (Play + App Store) | https://metur100.github.io/Wind.Sculptor.Landing/privacy.html |
+| Support URL (App Store) | https://metur100.github.io/Wind.Sculptor.Landing/#support |
+| Website / Marketing URL | https://metur100.github.io/Wind.Sculptor.Landing/ |
 
 ## 1. Android – Google Play
 

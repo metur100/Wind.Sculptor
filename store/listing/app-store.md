@@ -59,9 +59,9 @@ Take a breath, draw a gust and watch the wind do the rest.
 wind,particles,sand,relaxing,calm,puzzle,physics,satisfying,zen,shapes,daily,offline,casual,swipe
 ```
 
-**Support URL** (required): a page with a contact address – e.g. the page hosting the privacy policy, which includes the contact e-mail.
-**Marketing URL** (optional): leave empty.
-**Privacy Policy URL** (required): the hosted `store/privacy-policy.html` (see store/README.md).
+**Support URL** (required): https://metur100.github.io/Wind.Sculptor.Landing/#support
+**Marketing URL** (optional): https://metur100.github.io/Wind.Sculptor.Landing/
+**Privacy Policy URL** (required): https://metur100.github.io/Wind.Sculptor.Landing/privacy.html
 
 **What's New** – not shown for the first version.
 
@@ -78,7 +78,7 @@ App icon: built into the binary from `mobile/assets/icon.png` (no upload needed)
 
 ## App Privacy (App Store Connect → App Privacy)
 
-- **Privacy Policy URL:** hosted `store/privacy-policy.html`
+- **Privacy Policy URL:** https://metur100.github.io/Wind.Sculptor.Landing/privacy.html
 - "Do you or your third-party partners collect data from this app?" → **No, we do not collect data from this app**
 - Result shown on the store: **Data Not Collected**
 - Tracking: **No** (`NSPrivacyTracking` is false in the app's privacy manifest)
