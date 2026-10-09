@@ -1,0 +1,9 @@
+{
+  "appId": "com.certidevelopment.windsculptor",
+  "appName": "Wind Sculptor",
+  "webDir": "dist",
+  "backgroundColor": "#fff6ea",
+  "android": {
+    "allowMixedContent": false
+  }
+}

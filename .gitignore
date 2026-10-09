@@ -1,0 +1,9 @@
+node_modules
+dist
+test-results
+*.log
+.DS_Store
+.vite
+# Capacitor native projects are generated (see README)
+android
+ios
